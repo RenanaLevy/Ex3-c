@@ -2,6 +2,7 @@
 
 #define SIZE 50
 
+//This method moves the following i numbers one place to right.
 void shift_element(int *arr, int i){
     while(i){
         --i;
@@ -9,6 +10,7 @@ void shift_element(int *arr, int i){
     }
 }
 
+//Insertion sort.
 void insertion_sort(int *arr, int len){
     for(int i = 1; i < len; i++){
         int j = 0;
@@ -23,6 +25,7 @@ void insertion_sort(int *arr, int len){
     }
 }
 
+//Main.
 void print_arr(int *arr){
     printf("[");
     for(int i = 0; i < 50; i++){

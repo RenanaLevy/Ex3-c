@@ -6,17 +6,16 @@
 #define LINE 256
 #define WORD 30
 
+//Input lines.
 void searchLines(char *wordToSearch){
     char str[SIZE][LINE*WORD];
     for(int i = 0; i<SIZE ; i++){
         scanf("%[^\n]%*c", str[i]);
         substring(str[i], wordToSearch);
     }
-    /*for(int i = 0; i<SIZE ; i++){
-        printf("%s\n", str[i]);
-    }*/
 }
 
+//Print the line if it containig the wordToSearch.
 void substring(char line[], char *wordToSearch){
     int lenWord = strlen(wordToSearch);
     int count = 0;
@@ -35,6 +34,7 @@ void substring(char line[], char *wordToSearch){
     }
 }
 
+//Input words.
 void searchwords(char *wordToSearch){
     char str[SIZE*LINE][WORD];
     for(int i = 0; i < SIZE*LINE; i++){
@@ -43,28 +43,48 @@ void searchwords(char *wordToSearch){
     }
 }
 
+//Print the word if it similar to wordToSearch.
 void similarWord(char word[], char *wordToSearch){
     int countDifferent = 0;
     int wordLen = strlen(word);
     int searchLen = strlen(wordToSearch);
 
-    if((wordLen == (searchLen+1)) || (wordLen == searchLen)){
-
-        for(int i = 0; word[i] && (countDifferent <= 1); i++){
-            if(word[i] == *wordToSearch){
-                wordToSearch++;
-            }
-            else{
-                countDifferent++;
-            }  
-        }
-
-        if(countDifferent <= 1){
+    if(searchLen == 1){
+        if(wordLen == 1 && word[0] == *wordToSearch){
             printf("%s\n", word);
+        }
+        else if(wordLen == 2 && ((word[0] == *wordToSearch) || (word[1] == *wordToSearch))){
+            printf("%s\n", word);
+        }
+        else{
+            return;
+        }
+    }
+
+    else if(searchLen > 1){
+        if((wordLen == (searchLen+1)) || (wordLen == searchLen)){
+
+            for(int i = 0; word[i] && (countDifferent <= 1); i++){
+                if(word[i] == *wordToSearch){
+                    wordToSearch++;
+                }
+                else{
+                    countDifferent++;
+                }  
+            }
+
+            if(wordLen == searchLen && countDifferent ==1){
+                return;
+            }
+
+            if(countDifferent <= 1){
+                printf("%s\n", word);
+            }
         }
     }
 }
 
+//Main.
 int main(){
     char word[30];
     char type;
