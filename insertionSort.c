@@ -27,7 +27,7 @@ void insertion_sort(int *arr, int len){
 
 //Main.
 void print_arr(int *arr){
-    printf("[");
+    //printf("[");
     for(int i = 0; i < 50; i++){
         if(i == 49){
             printf("%d", *(arr+49));
@@ -36,7 +36,7 @@ void print_arr(int *arr){
             printf("%d,", *(arr+i));
         }
     }
-    printf("]\n");
+    printf("\n");
 }
 
 int main(){
@@ -45,7 +45,7 @@ int main(){
         //printf("please insert: ");
         scanf(" %d", (arr+i));
     }
-    print_arr(arr);
+    //print_arr(arr);
     insertion_sort(arr, 50);
     print_arr(arr);
 }
